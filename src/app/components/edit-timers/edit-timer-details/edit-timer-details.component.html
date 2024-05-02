@@ -1,0 +1,39 @@
+<div class="edit-details-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                @if (isNew) {
+                    Create a new timer set
+                }
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="flex-column-container">
+            <mat-form-field>
+                <mat-label>Timer set id</mat-label>
+                <input matInput required [(ngModel)]="timerData.id">
+                <button mat-icon-button matSuffix>
+                    <mat-icon>new</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Display name</mat-label>
+                <input matInput required [(ngModel)]="timerData.displayName">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Group</mat-label>
+                <input matInput [(ngModel)]="timerData.group">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Maximum timer duration (s)</mat-label>
+                <input matInput type="number" min="1" required [(ngModel)]="timerData.maxDuration">
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            @if (isNew) {
+                <button mat-button color="primary">
+                    Create timer set
+                </button>
+            }
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -1,0 +1,17 @@
+.edit-details-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    mat-card {
+        min-width: 10em;
+    }
+}
+
+.flex-column-container {
+    display: flex;
+    flex-direction: column;
+}
