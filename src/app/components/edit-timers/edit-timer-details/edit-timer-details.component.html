@@ -4,6 +4,8 @@
             <mat-card-title>
                 @if (isNew) {
                     Create a new timer set
+                } @else {
+                    Timer set details
                 }
             </mat-card-title>
         </mat-card-header>
@@ -11,8 +13,8 @@
             <mat-form-field>
                 <mat-label>Timer set id</mat-label>
                 <input matInput required [(ngModel)]="timerData.id">
-                <button mat-icon-button matSuffix>
-                    <mat-icon>new</mat-icon>
+                <button mat-icon-button matSuffix (click)="generateId()">
+                    <mat-icon>refresh</mat-icon>
                 </button>
             </mat-form-field>
             <mat-form-field>
@@ -30,10 +32,120 @@
         </mat-card-content>
         <mat-card-actions>
             @if (isNew) {
-                <button mat-button color="primary">
+                <button mat-button color="primary" (click)="saveNewTimers()" [disabled]="!timerData.id || !timerData.displayName || !timerData.maxDuration">
                     Create timer set
+                </button>
+            }
+            @if (!isNew) {
+                <button mat-button color="primary" (click)="exportTimers()">
+                    Export timer set
+                </button>
+                <button mat-button color="primary" (click)="saveTimers()">
+                    Save timer set
                 </button>
             }
         </mat-card-actions>
     </mat-card>
+    @if (!isNew) {
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Phases
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="flex-column-container">
+                @if (!timerData.phases || timerData.phases.length === 0) {
+                    No phases defined
+                } @else {
+                    {{timerData.phases}}
+                }
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Events
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="flex-column-container">
+                @if (!timerData.events || timerData.events.length === 0) {
+                    No events defined
+                } @else {
+                    {{timerData.events}}
+                }
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Sounds
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="flex-column-container">
+                @if (!timerData.sounds || timerData.sounds.length === 0) {
+                    No sounds uploaded
+                } @else {
+                    @for (sound of timerData.sounds; track sound) {
+                        <div class="image-display flex-row-container">
+                            <audio controls>
+                                <source [src]="sound.base64Data">
+                            </audio>
+                            <div>
+                                <mat-form-field>
+                                    <label>Name</label>
+                                    <input matInput [(ngModel)]="sound.name">
+                                    <mat-icon matSuffix [matTooltip]="'File name: ' + sound.fileName" matTooltipPosition="above">info</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    }
+                }
+                @if (showSoundUpload) {
+                    <app-file-import (uploadedFile)="addSoundToTimerSet($event)"></app-file-import>
+                }
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button color="primary" (click)="showSoundUpload = true">
+                    Upload image
+                </button>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Images
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="flex-column-container">
+                @if (!timerData.images || timerData.images.length === 0) {
+                    No images uploaded
+                } @else {
+                    @for (image of timerData.images; track image) {
+                        <div class="image-display flex-row-container">
+                            <img [src]="image.base64Data" />
+                            <div>
+                                <mat-form-field>
+                                    <label>Name</label>
+                                    <input matInput [(ngModel)]="image.name">
+                                    <mat-icon matSuffix [matTooltip]="'File name: ' + image.fileName" matTooltipPosition="above">info</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    }
+                }
+                @if (showImageUpload) {
+                    <app-file-import (uploadedFile)="addImageToTimerSet($event)"></app-file-import>
+                }
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button color="primary" (click)="showImageUpload = true">
+                    Upload image
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    }
 </div>

@@ -1,0 +1,43 @@
+<div class="import-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Import timer set</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <app-file-import (uploadedFile)="onTimerUploaded($event)"></app-file-import>
+            @if (hasImportedTimers) {
+                <div class="timers-details">
+                    <mat-form-field>
+                        <mat-label>Id</mat-label>
+                        <input matInput disabled [ngModel]="importedTimers.id">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Display name</mat-label>
+                        <input matInput disabled [ngModel]="importedTimers.displayName">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Group</mat-label>
+                        <input matInput disabled [ngModel]="importedTimers.group">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Created</mat-label>
+                        <input matInput type="datetime" disabled [ngModel]="importedTimers.created">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Last updated</mat-label>
+                        <input matInput type="datetime" disabled [ngModel]="importedTimers.updated">
+                    </mat-form-field>
+                </div>
+            }
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button color="primary" [disabled]="!hasImportedTimers" (click)="importTimers()">
+                @if (overwritesTimers) {
+                    Import and update timer set
+                } @else {
+                    Import timer set
+                }
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

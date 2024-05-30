@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink, RouterModule } from '@angular/router';
+import { TimerEditorService } from '../../services/timer-editor.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,5 +12,6 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  public timerEditorService: TimerEditorService = inject(TimerEditorService);
 
 }

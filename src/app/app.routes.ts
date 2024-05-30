@@ -6,6 +6,7 @@ import { GlobalConfigurationComponent } from './components/navbar/global-configu
 import { AboutAppComponent } from './components/navbar/about-app/about-app.component';
 import { editRoutes } from './edit.routes';
 import { EditTimerDetailsComponent } from './components/edit-timers/edit-timer-details/edit-timer-details.component';
+import { ImportTimerSetComponent } from './components/edit-timers/import-timer-set/import-timer-set.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -14,5 +15,7 @@ export const routes: Routes = [
     { path: 'about', component: AboutAppComponent },
     { path: 'timers', component: ActiveTimersComponent },
     { path: 'edit', component: EditTimersComponent },
-    { path: 'edit/new', component: EditTimerDetailsComponent }
+    { path: 'edit/import', component: ImportTimerSetComponent },
+    { path: 'edit/new', component: EditTimerDetailsComponent },
+    { path: 'edit/:id', component: EditTimerDetailsComponent }
 ];

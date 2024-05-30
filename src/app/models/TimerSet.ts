@@ -10,6 +10,8 @@ export interface ITimerSet {
     displayName: string;
     // for timer selection
     group: string;
+    created: Date;
+    updated: Date;
     
     maxDuration: number;
     overrideTimerAdjustInterval: boolean;

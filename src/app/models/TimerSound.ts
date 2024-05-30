@@ -8,4 +8,5 @@ export interface ITimerSound {
     // set when uploaded to timer set
     fileName: string;
     base64Data: string;
+    extension: string;
 }

@@ -7,11 +7,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ToggleLightDarkModeComponent } from './toggle-light-dark-mode/toggle-light-dark-mode.component';
 import { GlobalConfigurationComponent } from './global-configuration/global-configuration.component';
 import { AboutAppComponent } from './about-app/about-app.component';
+import { ConnectionInfoComponent } from './connection-info/connection-info.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, ToggleLightDarkModeComponent, GlobalConfigurationComponent, AboutAppComponent],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, ToggleLightDarkModeComponent, GlobalConfigurationComponent, AboutAppComponent, ConnectionInfoComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

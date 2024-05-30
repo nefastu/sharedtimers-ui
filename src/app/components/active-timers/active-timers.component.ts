@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-active-timers',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
   templateUrl: './active-timers.component.html',
   styleUrl: './active-timers.component.scss'
 })
-export class ActiveTimersComponent {
+export class ActiveTimersComponent implements OnInit {
+  private router: Router = inject(Router);
+
+  ngOnInit(): void {
+    // redirect to timer selection if 
+  }
 
 }
