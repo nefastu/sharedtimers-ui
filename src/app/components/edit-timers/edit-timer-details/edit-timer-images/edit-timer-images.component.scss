@@ -1,0 +1,30 @@
+mat-card {
+    min-width: 30em;
+}
+
+.flex-column-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-display {
+    align-items: center;
+    justify-content: space-around;
+    img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.text-area {
+    align-items: stretch;
+}

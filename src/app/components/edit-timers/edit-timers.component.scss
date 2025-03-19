@@ -10,3 +10,8 @@
         min-width: 10em;
     }
 }
+
+.timers-list {
+    display: flex;
+    flex-direction: column;
+}

@@ -41,111 +41,122 @@
                     Export timer set
                 </button>
                 <button mat-button color="primary" (click)="saveTimers()">
-                    Save timer set
+                    Save changes
                 </button>
             }
         </mat-card-actions>
     </mat-card>
+    @switch (viewMode) {
+        @case (0) {
+            <!-- overview -->
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        Edit timer set
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    @if (timerData.phases && timerData.phases.length > 0) {
+                        {{timerData.phases.length}} phases are defined
+                    } @else {
+                        No phases defined
+                    }
+                    <br />
+                    @if (timerData.events && timerData.events.length > 0) {
+                        {{timerData.events.length}} events are defined
+                    } @else {
+                        No events defined
+                    }
+                    <br />
+                    @if (timerData.sounds && timerData.sounds.length > 0) {
+                        {{timerData.sounds.length}} sounds are uploaded
+                    } @else {
+                        No sounds uploaded
+                    }
+                    <br />
+                    @if (timerData.images && timerData.images.length > 0) {
+                        {{timerData.images.length}} images are uploaded
+                    } @else {
+                        No images uploaded
+                    }
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="viewMode = 3">
+                        View phases
+                    </button>
+                    <button mat-button (click)="viewMode = 6">
+                        View events
+                    </button>
+                    <button mat-button (click)="viewMode = 1">
+                        View sounds 
+                    </button>
+                    <button mat-button (click)="viewMode = 2">
+                        View images 
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        }
+        @case (1) {
+            <!-- sounds -->
+            <app-edit-timer-sounds [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-sounds>
+        }
+        @case (2) {
+            <!-- images -->
+            <app-edit-timer-images [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-images>
+        }
+        @case (3) {
+            <!-- phases overview -->
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        Phases
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="flex-column-container">
+                    @if (!timerData.phases || timerData.phases.length === 0) {
+                        No phases defined
+                    } @else {
+                        {{timerData.phases}}
+                    }
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="viewMode = 0">
+                        <mat-icon>arrow_back</mat-icon>
+                        Back to overview
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+
+        }
+        @case (4) {
+            <!-- phase details -->
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        Events
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="flex-column-container">
+                    @if (!timerData.events || timerData.events.length === 0) {
+                        No events defined
+                    } @else {
+                        {{timerData.events}}
+                    }
+                </mat-card-content>
+                <mat-card-actions>
+                </mat-card-actions>
+            </mat-card>
+        }
+        @case (5) {
+            <!-- new timer set -->
+            
+        }
+
+        @case (6) {
+            <!-- timer events -->
+            <app-edit-timer-events [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-events>
+        }
+    }
     @if (!isNew) {
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>
-                    Phases
-                </mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="flex-column-container">
-                @if (!timerData.phases || timerData.phases.length === 0) {
-                    No phases defined
-                } @else {
-                    {{timerData.phases}}
-                }
-            </mat-card-content>
-            <mat-card-actions>
-            </mat-card-actions>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>
-                    Events
-                </mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="flex-column-container">
-                @if (!timerData.events || timerData.events.length === 0) {
-                    No events defined
-                } @else {
-                    {{timerData.events}}
-                }
-            </mat-card-content>
-            <mat-card-actions>
-            </mat-card-actions>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>
-                    Sounds
-                </mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="flex-column-container">
-                @if (!timerData.sounds || timerData.sounds.length === 0) {
-                    No sounds uploaded
-                } @else {
-                    @for (sound of timerData.sounds; track sound) {
-                        <div class="image-display flex-row-container">
-                            <audio controls>
-                                <source [src]="sound.base64Data">
-                            </audio>
-                            <div>
-                                <mat-form-field>
-                                    <label>Name</label>
-                                    <input matInput [(ngModel)]="sound.name">
-                                    <mat-icon matSuffix [matTooltip]="'File name: ' + sound.fileName" matTooltipPosition="above">info</mat-icon>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                    }
-                }
-                @if (showSoundUpload) {
-                    <app-file-import (uploadedFile)="addSoundToTimerSet($event)"></app-file-import>
-                }
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button color="primary" (click)="showSoundUpload = true">
-                    Upload image
-                </button>
-            </mat-card-actions>
-        </mat-card>
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>
-                    Images
-                </mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="flex-column-container">
-                @if (!timerData.images || timerData.images.length === 0) {
-                    No images uploaded
-                } @else {
-                    @for (image of timerData.images; track image) {
-                        <div class="image-display flex-row-container">
-                            <img [src]="image.base64Data" />
-                            <div>
-                                <mat-form-field>
-                                    <label>Name</label>
-                                    <input matInput [(ngModel)]="image.name">
-                                    <mat-icon matSuffix [matTooltip]="'File name: ' + image.fileName" matTooltipPosition="above">info</mat-icon>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                    }
-                }
-                @if (showImageUpload) {
-                    <app-file-import (uploadedFile)="addImageToTimerSet($event)"></app-file-import>
-                }
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button color="primary" (click)="showImageUpload = true">
-                    Upload image
-                </button>
-            </mat-card-actions>
-        </mat-card>
     }
 </div>

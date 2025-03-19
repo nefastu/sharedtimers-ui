@@ -1,4 +1,5 @@
 export interface IPhaseEvent {
+    id: string;
     hotkeyGroup: number;
     order: number;
     // -1 is indefinite
@@ -6,4 +7,5 @@ export interface IPhaseEvent {
     interval: number;
     startIntervalFromStart: boolean;
     offsetFromStart: number;
+    timerEventId: string;
 }

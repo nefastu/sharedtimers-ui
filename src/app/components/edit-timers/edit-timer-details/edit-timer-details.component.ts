@@ -14,11 +14,25 @@ import { FileImportComponent } from '../../file-import/file-import.component';
 import { ITimerImage } from '../../../models/TimerImage';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ITimerSound } from '../../../models/TimerSound';
+import { EditTimerImagesComponent } from './edit-timer-images/edit-timer-images.component';
+import { EditTimerSoundsComponent } from './edit-timer-sounds/edit-timer-sounds.component';
+import { EditTimerEventsComponent } from './edit-timer-events/edit-timer-events.component';
+
+export enum EditTimerView {
+  Overview = 0,
+  Sounds = 1,
+  Images = 2,
+  PhaseOverview = 3,
+  PhaseDetails = 4,
+  NewTimerSet = 5,
+  Events = 6
+}
 
 @Component({
   selector: 'app-edit-timer-details',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, CommonModule, FormsModule, FileImportComponent, MatTooltipModule],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, CommonModule, FormsModule, 
+    FileImportComponent, MatTooltipModule, EditTimerImagesComponent, EditTimerSoundsComponent, EditTimerEventsComponent],
   templateUrl: './edit-timer-details.component.html',
   styleUrl: './edit-timer-details.component.scss'
 })
@@ -31,6 +45,8 @@ export class EditTimerDetailsComponent implements OnInit {
 
   public showImageUpload: boolean = false;
   public showSoundUpload: boolean = false;
+
+  public viewMode: EditTimerView = EditTimerView.Overview;
 
   ngOnInit(): void {
     this.route.url.subscribe({
@@ -86,47 +102,5 @@ export class EditTimerDetailsComponent implements OnInit {
     document.body.appendChild(element);
     element.click(); // simulate click
     document.body.removeChild(element);
-  }
-
-  addImageToTimerSet(file: File) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      const newImage = {
-        extension: file.type,
-        fileName: file.name,
-        name: file.name,
-        base64Data: reader.result
-      } as ITimerImage;
-      if (!this.timerData.images) {
-        this.timerData.images = [];
-      }
-      this.timerData.images.push(newImage);
-      this.showImageUpload = false;
-    };
-    reader.onerror = () => {
-      console.error("cannot handle image upload");
-    }
-  }
-
-  addSoundToTimerSet(file: File) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      const newImage = {
-        extension: file.type,
-        fileName: file.name,
-        name: file.name,
-        base64Data: reader.result
-      } as ITimerSound;
-      if (!this.timerData.sounds) {
-        this.timerData.sounds = [];
-      }
-      this.timerData.sounds.push(newImage);
-      this.showSoundUpload = false;
-    };
-    reader.onerror = () => {
-      console.error("cannot handle sound upload");
-    }
   }
 }

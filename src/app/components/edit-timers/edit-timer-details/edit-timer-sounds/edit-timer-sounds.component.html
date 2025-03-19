@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Sounds
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="flex-column-container">
+        @if (!timerData.sounds || timerData.sounds.length === 0) {
+            No sounds uploaded
+        } @else {
+            @for (sound of timerData.sounds; track sound) {
+                <div class="image-display flex-row-container">
+                    <audio controls>
+                        <source [src]="sound.base64Data">
+                    </audio>
+                    <div>
+                        <mat-form-field>
+                            <label>Name</label>
+                            <input matInput [(ngModel)]="sound.name">
+                            <mat-icon matSuffix [matTooltip]="'File name: ' + sound.fileName" matTooltipPosition="above">info</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+            }
+        }
+        @if (showUpload) {
+            <app-file-import (uploadedFile)="addSoundToTimerSet($event)"></app-file-import>
+        }
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="backToOverview.emit(true)">
+            <mat-icon>arrow_back</mat-icon>
+            Back to overview
+        </button>
+        <button mat-button color="primary" (click)="showUpload = !showUpload">
+            Upload sound
+        </button>
+    </mat-card-actions>
+</mat-card>

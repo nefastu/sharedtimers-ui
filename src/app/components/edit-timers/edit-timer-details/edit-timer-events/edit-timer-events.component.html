@@ -1,0 +1,43 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Events
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="flex-column-container">
+        @if (!timerData.events || timerData.events.length === 0) {
+            No events defined
+        } @else {
+            @for (event of timerData.events; track event) {
+
+                <!--<div class="image-display flex-row-container">
+                    <img [src]="image.base64Data" />
+                    <div>
+                        <mat-form-field>
+                            <label>Name</label>
+                            <input matInput [(ngModel)]="image.name">
+                            <mat-icon matSuffix [matTooltip]="'File name: ' + image.fileName" matTooltipPosition="above">info</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>-->
+            }
+        }
+        @if (showNewSection) {
+            <h4>New event</h4>
+            <mat-form-field>
+                <mat-label>demo</mat-label>
+                <input matInput>
+            </mat-form-field>
+        }
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="backToOverview.emit(true)">
+            <mat-icon>arrow_back</mat-icon>
+            Back to overview
+        </button>
+        <button mat-button color="primary" (click)="showNewSection = true">
+            Add new event
+        </button>
+    </mat-card-actions>
+</mat-card>
