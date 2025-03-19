@@ -6,11 +6,10 @@ import { RouterLink } from '@angular/router';
 import { TimerEditorService } from '../../services/timer-editor.service';
 
 @Component({
-  selector: 'app-edit-timers',
-  standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, RouterLink],
-  templateUrl: './edit-timers.component.html',
-  styleUrl: './edit-timers.component.scss'
+    selector: 'app-edit-timers',
+    imports: [MatCardModule, MatButtonModule, MatIconModule, RouterLink],
+    templateUrl: './edit-timers.component.html',
+    styleUrl: './edit-timers.component.scss'
 })
 export class EditTimersComponent {
   public editTimersService: TimerEditorService = inject(TimerEditorService);

@@ -11,11 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-edit-timer-images',
-  standalone: true,
-  imports: [MatFormFieldModule, FormsModule, MatTooltipModule, FileImportComponent, MatCardModule, MatIconModule, MatButtonModule, MatInputModule],
-  templateUrl: './edit-timer-images.component.html',
-  styleUrl: './edit-timer-images.component.scss'
+    selector: 'app-edit-timer-images',
+    imports: [MatFormFieldModule, FormsModule, MatTooltipModule, FileImportComponent, MatCardModule, MatIconModule, MatButtonModule, MatInputModule],
+    templateUrl: './edit-timer-images.component.html',
+    styleUrl: './edit-timer-images.component.scss'
 })
 export class EditTimerImagesComponent {
   @Input() timerData: ITimerSet = {} as ITimerSet;

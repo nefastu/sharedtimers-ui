@@ -13,11 +13,10 @@ import { ITimerSelectionEntry } from '../../../models/TimerSelectionEntry';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-import-timer-set',
-  standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, CommonModule, FormsModule, FileImportComponent],
-  templateUrl: './import-timer-set.component.html',
-  styleUrl: './import-timer-set.component.scss'
+    selector: 'app-import-timer-set',
+    imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, CommonModule, FormsModule, FileImportComponent],
+    templateUrl: './import-timer-set.component.html',
+    styleUrl: './import-timer-set.component.scss'
 })
 export class ImportTimerSetComponent {
   public timerEditorService: TimerEditorService = inject(TimerEditorService);

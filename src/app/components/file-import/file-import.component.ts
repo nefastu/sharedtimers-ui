@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-file-import',
-  standalone: true,
-  imports: [],
-  templateUrl: './file-import.component.html',
-  styleUrl: './file-import.component.scss'
+    selector: 'app-file-import',
+    imports: [],
+    templateUrl: './file-import.component.html',
+    styleUrl: './file-import.component.scss'
 })
 export class FileImportComponent {
   @Input() isMultiple: boolean = false;

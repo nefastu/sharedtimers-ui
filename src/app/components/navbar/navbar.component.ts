@@ -10,11 +10,10 @@ import { AboutAppComponent } from './about-app/about-app.component';
 import { ConnectionInfoComponent } from './connection-info/connection-info.component';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, ToggleLightDarkModeComponent, GlobalConfigurationComponent, AboutAppComponent, ConnectionInfoComponent],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+    selector: 'app-navbar',
+    imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, ToggleLightDarkModeComponent, GlobalConfigurationComponent, AboutAppComponent, ConnectionInfoComponent],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
 

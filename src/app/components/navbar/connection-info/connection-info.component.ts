@@ -4,11 +4,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-connection-info',
-  standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatTooltipModule],
-  templateUrl: './connection-info.component.html',
-  styleUrl: './connection-info.component.scss'
+    selector: 'app-connection-info',
+    imports: [MatButtonModule, MatIconModule, MatTooltipModule],
+    templateUrl: './connection-info.component.html',
+    styleUrl: './connection-info.component.scss'
 })
 export class ConnectionInfoComponent {
   buttonIcon: string = 'person';

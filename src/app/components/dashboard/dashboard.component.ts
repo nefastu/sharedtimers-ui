@@ -5,11 +5,10 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { TimerEditorService } from '../../services/timer-editor.service';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [MatCardModule, MatButtonModule, RouterModule, RouterLink],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+    selector: 'app-dashboard',
+    imports: [MatCardModule, MatButtonModule, RouterModule, RouterLink],
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   public timerEditorService: TimerEditorService = inject(TimerEditorService);

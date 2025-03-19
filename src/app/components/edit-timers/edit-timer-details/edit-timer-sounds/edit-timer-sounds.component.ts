@@ -10,11 +10,10 @@ import { FileImportComponent } from '../../../file-import/file-import.component'
 import { ITimerSound } from '../../../../models/TimerSound';
 
 @Component({
-  selector: 'app-edit-timer-sounds',
-  standalone: true,
-  imports: [MatCardModule, MatInputModule, FormsModule, MatTooltipModule, MatButtonModule, MatIconModule, FileImportComponent],
-  templateUrl: './edit-timer-sounds.component.html',
-  styleUrl: './edit-timer-sounds.component.scss'
+    selector: 'app-edit-timer-sounds',
+    imports: [MatCardModule, MatInputModule, FormsModule, MatTooltipModule, MatButtonModule, MatIconModule, FileImportComponent],
+    templateUrl: './edit-timer-sounds.component.html',
+    styleUrl: './edit-timer-sounds.component.scss'
 })
 export class EditTimerSoundsComponent {
   @Input() timerData: ITimerSet = {} as ITimerSet;

@@ -3,11 +3,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-toggle-light-dark-mode',
-  standalone: true,
-  imports: [MatButtonModule, MatIconModule],
-  templateUrl: './toggle-light-dark-mode.component.html',
-  styleUrl: './toggle-light-dark-mode.component.scss'
+    selector: 'app-toggle-light-dark-mode',
+    imports: [MatButtonModule, MatIconModule],
+    templateUrl: './toggle-light-dark-mode.component.html',
+    styleUrl: './toggle-light-dark-mode.component.scss'
 })
 export class ToggleLightDarkModeComponent implements OnInit {
   public dark: string = "dark-theme";

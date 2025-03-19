@@ -11,11 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-global-configuration',
-  standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, MatSliderModule, MatFormFieldModule, MatInputModule, FormsModule, CommonModule],
-  templateUrl: './global-configuration.component.html',
-  styleUrl: './global-configuration.component.scss'
+    selector: 'app-global-configuration',
+    imports: [MatCardModule, MatButtonModule, MatIconModule, MatSliderModule, MatFormFieldModule, MatInputModule, FormsModule, CommonModule],
+    templateUrl: './global-configuration.component.html',
+    styleUrl: './global-configuration.component.scss'
 })
 export class GlobalConfigurationComponent {
   //public globalSettingsService = Inject(GlobalConfigurationService);

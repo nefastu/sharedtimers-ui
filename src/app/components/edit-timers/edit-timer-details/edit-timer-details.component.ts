@@ -29,12 +29,11 @@ export enum EditTimerView {
 }
 
 @Component({
-  selector: 'app-edit-timer-details',
-  standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, CommonModule, FormsModule, 
-    FileImportComponent, MatTooltipModule, EditTimerImagesComponent, EditTimerSoundsComponent, EditTimerEventsComponent],
-  templateUrl: './edit-timer-details.component.html',
-  styleUrl: './edit-timer-details.component.scss'
+    selector: 'app-edit-timer-details',
+    imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, CommonModule, FormsModule,
+        FileImportComponent, MatTooltipModule, EditTimerImagesComponent, EditTimerSoundsComponent, EditTimerEventsComponent],
+    templateUrl: './edit-timer-details.component.html',
+    styleUrl: './edit-timer-details.component.scss'
 })
 export class EditTimerDetailsComponent implements OnInit {
   private route: ActivatedRoute = inject(ActivatedRoute);

@@ -9,11 +9,10 @@ import { ITimerEvent } from '../../../../models/TimerEvent';
 import { Guid } from 'guid-typescript';
 
 @Component({
-  selector: 'app-edit-timer-events',
-  standalone: true,
-  imports: [MatCardModule, MatInputModule, FormsModule, MatIconModule, MatButtonModule],
-  templateUrl: './edit-timer-events.component.html',
-  styleUrl: './edit-timer-events.component.scss'
+    selector: 'app-edit-timer-events',
+    imports: [MatCardModule, MatInputModule, FormsModule, MatIconModule, MatButtonModule],
+    templateUrl: './edit-timer-events.component.html',
+    styleUrl: './edit-timer-events.component.scss'
 })
 export class EditTimerEventsComponent {
   @Input() timerData: ITimerSet = {} as ITimerSet;
