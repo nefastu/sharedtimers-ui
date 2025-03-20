@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@use "primeicons/primeicons.css";
 
-@import 'app/theme/custom-light-dark-theme.scss';
+:root {
+    --layout-section-transition-duration: 0.2s;
+    --element-transition-duration: var(--p-transition-duration);
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+    font-size: 14px;
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+

@@ -1,0 +1,13 @@
+.settings-container {
+    display: flex;
+    justify-content: center;
+}
+
+.settings-card {
+    min-width: 100%;
+    & {
+        @media screen and (min-width: 45rem) {
+            min-width: 49rem;
+        }
+    }
+}

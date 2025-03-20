@@ -1,0 +1,27 @@
+<p-toast />
+<div class="settings-container">
+    <p-button class="settings-card ml-2" [link]="true" routerLink="/" label="Back to dashboard" icon="pi pi-arrow-left" />
+</div>
+<div class="settings-container">
+    <p-card class="settings-card">
+        <ng-template #title>
+            Global settings
+        </ng-template>
+        <h4 class="text-xl">Sound volume</h4>
+        <div class="flex flex-col gap-5 mb-2 mt-2">
+            <div class="flex flex-col gap-2">
+                <label for="inputvolumne">Default volume</label>
+                <p-inputnumber id="inputvolumne" [ngModel]="globalSettingsService.config().defaultVolume" (ngModelChange)="updateVolume($event)" [min]="0" [max]="100" suffix="%" />
+                <p-slider class="mt-1" [ngModel]="globalSettingsService.config().defaultVolume" (ngModelChange)="updateVolume($event)" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="inputinterval">Default timer adjust interval in ms</label>
+                <p-inputnumber id="inputinterval" [ngModel]="globalSettingsService.config().defaultTimerAdjustInterval" (ngModelChange)="updateInterval($event)" [min]="0" />
+            </div>
+        </div>
+        <ng-template #footer>
+            <p-button (click)="saveSettings()" label="Save" icon="pi pi-save" />
+            <p-button (click)="resetToDefault()" label="Reset to default" icon="pi pi-undo" severity="secondary" />
+        </ng-template>
+    </p-card>
+</div>

@@ -1,0 +1,5 @@
+<span>{{userName}}</span>
+@if (buttonIcon === 'pi pi-users') {
+    <span>&nbsp;in group {{groupName}}</span>
+}
+<p-button class="mr-2" text (click)="demo()" [pTooltip]="buttonTooltip" tooltipPosition="bottom" [icon]="buttonIcon" />

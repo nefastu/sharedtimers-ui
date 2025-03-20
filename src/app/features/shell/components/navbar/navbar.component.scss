@@ -1,0 +1,12 @@
+.app-navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 997;
+}
+
+.navbar-spacer {
+    flex-grow: 1;
+}

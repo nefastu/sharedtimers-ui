@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+    <p-card>
+        <ng-template #title>
+            Active timers
+        </ng-template>
+        <p>
+            Connected to #group#, active timer set #timersetname#
+        </p>
+        <ng-template #footer>
+            <p-button routerLink="/timers" [link]="true" label="Go to timers" />
+        </ng-template>
+    </p-card>
+    <p-card>
+        <ng-template #title>
+            Edit timers
+        </ng-template>
+        <p>
+            A total of <!--{{timerEditorService.timerSelection().length}}--> timer sets are registered
+        </p>
+        <ng-template #footer>
+            <p-button routerLink="/edit" [link]="true" label="Edit timers" />
+        </ng-template>
+    </p-card>
+</div>

@@ -3,12 +3,12 @@ The following milestones should be used to track progress.
 
 ## Local mode
 ### Milestone 1: working UI
-- [ ] UI only mode
-- [ ] support light/dark color scheme
-- [ ] use `PrimeNG` with `tailwindcss` instead of angular material
-- [ ] UI configuration (sound settings)
-- [ ] split up to lazy loaded modules
-- [ ] basic routing for timer selection, timer view, admin overview, timer config overview
+- [x] UI only mode
+- [x] support light/dark color scheme
+- [x] use `PrimeNG` with `tailwindcss` instead of angular material
+- [x] UI configuration (sound settings)
+- [x] split up to lazy loaded modules
+- [x] basic routing for timer selection, timer view, admin overview, timer config overview
 
 ### Milestone 2: working timer configuration
 - [ ] save timers to localStorage
@@ -22,6 +22,7 @@ The following milestones should be used to track progress.
 - [ ] buttons for timer actions
 - [ ] local in focus hotkey support
 - [ ] sound playback
+- [ ] first working version 🎉
 
 ## Hosted local mode
 ### Milestone 4: backend database, backend websockets
