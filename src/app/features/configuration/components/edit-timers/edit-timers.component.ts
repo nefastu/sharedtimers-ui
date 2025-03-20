@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { TimerEditorService } from '../../services/timer-editor.service';
+import { TimerEditorService } from '../../services/timer-editor/timer-editor.service';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-edit-timers',
-    imports: [MatCardModule, MatButtonModule, MatIconModule, RouterLink],
+    imports: [CardModule, ButtonModule, RouterLink],
     templateUrl: './edit-timers.component.html',
     styleUrl: './edit-timers.component.scss'
 })

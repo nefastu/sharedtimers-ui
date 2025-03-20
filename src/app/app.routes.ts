@@ -13,7 +13,8 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'about', component: AboutAppComponent },
     { path: 'settings', component: GlobalConfigurationComponent },
-    { path: 'timers', loadChildren: () => import('./features/active-timers/active-timers.module').then(m => m.ActiveTimersModule) }
+    { path: 'timers', loadChildren: () => import('./features/active-timers/active-timers.module').then(m => m.ActiveTimersModule) },
+    { path: 'edit', loadChildren:() => import('./features/configuration/configuration.module').then(m => m.ConfigurationModule) }
     /*{ path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'edit', component: EditTimersComponent },

@@ -1,8 +1,48 @@
 <div class="import-container">
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Import timer set</mat-card-title>
-        </mat-card-header>
+    <p-card>
+        <ng-template #title>
+            Import timer set
+        </ng-template>
+        
+        <app-file-import (uploadedFile)="onTimerUploaded($event)"></app-file-import>
+        @if (hasImportedTimers) {
+            <div class="timers-details">
+                <div class="field">
+                    <label for="timerid">Id</label>
+                    <input type="text" pInputText id="timerid" readonly [ngModel]="importedTimers.id" />
+                </div>
+                <div class="field">
+                    <label for="timerdisplay">Display name</label>
+                    <input type="text" pInputText id="timerdisplay" readonly [ngModel]="importedTimers.displayName" />
+                </div>
+                <div class="field">
+                    <label for="timergroup">Group</label>
+                    <input type="text" pInputText id="timergroup" readonly [ngModel]="importedTimers.group" />
+                </div>
+                <div class="field">
+                    <label for="timercreated">Created</label>
+                    <input type="datetime" pInputText id="timercreated" readonly [ngModel]="importedTimers.created" />
+                </div>
+                <div class="field">
+                    <label for="timerupdated">Last updated</label>
+                    <input type="datetime" pInputText id="timerupdated" readonly [ngModel]="importedTimers.updated" />
+                </div>
+            </div>
+        }
+
+        <ng-template #footer>
+            <p-button [disabled]="!hasImportedTimers" (click)="importTimers()">
+                <span pButtonLabel>
+                    @if (overwritesTimers) {
+                        Import and update timer set
+                    } @else {
+                        Import timer set
+                    }
+                </span>
+            </p-button>
+        </ng-template>
+    </p-card>
+    <!--<mat-card>
         <mat-card-content>
             <app-file-import (uploadedFile)="onTimerUploaded($event)"></app-file-import>
             @if (hasImportedTimers) {
@@ -30,14 +70,5 @@
                 </div>
             }
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-button color="primary" [disabled]="!hasImportedTimers" (click)="importTimers()">
-                @if (overwritesTimers) {
-                    Import and update timer set
-                } @else {
-                    Import timer set
-                }
-            </button>
-        </mat-card-actions>
-    </mat-card>
+    </mat-card>-->
 </div>

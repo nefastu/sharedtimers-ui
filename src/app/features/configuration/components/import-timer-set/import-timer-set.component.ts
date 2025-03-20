@@ -1,20 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { FileImportComponent } from '../../file-import/file-import.component';
-import { ITimerSet } from '../../../models/TimerSet';
-import { TimerEditorService } from '../../../services/timer-editor.service';
-import { ITimerSelectionEntry } from '../../../models/TimerSelectionEntry';
+import { ITimerSet } from '../../../shell/models/TimerSet';
+import { TimerEditorService } from '../../services/timer-editor/timer-editor.service';
+import { ITimerSelectionEntry } from '../../../shell/models/TimerSelectionEntry';
 import { Router } from '@angular/router';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FileImportComponent } from '../file-import/file-import.component';
 
 @Component({
     selector: 'app-import-timer-set',
-    imports: [MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, CommonModule, FormsModule, FileImportComponent],
+    imports: [CardModule, ButtonModule, InputTextModule, CommonModule, FormsModule, FileImportComponent],
     templateUrl: './import-timer-set.component.html',
     styleUrl: './import-timer-set.component.scss'
 })

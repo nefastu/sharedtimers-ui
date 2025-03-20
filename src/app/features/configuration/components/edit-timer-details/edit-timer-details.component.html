@@ -1,5 +1,5 @@
 <div class="edit-details-container">
-    <mat-card>
+    <!--<mat-card>
         <mat-card-header>
             <mat-card-title>
                 @if (isNew) {
@@ -45,11 +45,11 @@
                 </button>
             }
         </mat-card-actions>
-    </mat-card>
+    </mat-card>-->
     @switch (viewMode) {
         @case (0) {
             <!-- overview -->
-            <mat-card>
+            <!--<mat-card>
                 <mat-card-header>
                     <mat-card-title>
                         Edit timer set
@@ -94,19 +94,19 @@
                         View images 
                     </button>
                 </mat-card-actions>
-            </mat-card>
+            </mat-card>-->
         }
         @case (1) {
             <!-- sounds -->
-            <app-edit-timer-sounds [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-sounds>
+            <!--<app-edit-timer-sounds [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-sounds>-->
         }
         @case (2) {
             <!-- images -->
-            <app-edit-timer-images [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-images>
+            <!--<app-edit-timer-images [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-images>-->
         }
         @case (3) {
             <!-- phases overview -->
-            <mat-card>
+            <!--<mat-card>
                 <mat-card-header>
                     <mat-card-title>
                         Phases
@@ -125,12 +125,12 @@
                         Back to overview
                     </button>
                 </mat-card-actions>
-            </mat-card>
+            </mat-card>-->
 
         }
         @case (4) {
             <!-- phase details -->
-            <mat-card>
+            <!--<mat-card>
                 <mat-card-header>
                     <mat-card-title>
                         Events
@@ -145,7 +145,7 @@
                 </mat-card-content>
                 <mat-card-actions>
                 </mat-card-actions>
-            </mat-card>
+            </mat-card>-->
         }
         @case (5) {
             <!-- new timer set -->
@@ -154,7 +154,7 @@
 
         @case (6) {
             <!-- timer events -->
-            <app-edit-timer-events [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-events>
+            <!--<app-edit-timer-events [timerData]="timerData" (backToOverview)="viewMode = 0"></app-edit-timer-events>-->
         }
     }
     @if (!isNew) {

@@ -1,7 +1,7 @@
 import { Injectable, WritableSignal, inject, signal } from '@angular/core';
-import { LocalStorageService } from './local-storage.service';
-import { ITimerSet } from '../models/TimerSet';
-import { ITimerSelectionEntry } from '../models/TimerSelectionEntry';
+import { LocalStorageService } from '../../../shell/services/local-storage/local-storage.service';
+import { ITimerSet } from '../../../shell/models/TimerSet';
+import { ITimerSelectionEntry } from '../../../shell/models/TimerSelectionEntry';
 
 @Injectable({
   providedIn: 'root'
