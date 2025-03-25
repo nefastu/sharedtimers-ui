@@ -54,6 +54,7 @@ export class ImageNewComponent {
 
 
   onFileUpload(file: File): void {
+    this.image.source = ResourceSourceEnum.LocalBrowser;
     this.uploadedFile = file;
     this.imageObjectUrl = URL.createObjectURL(file);
     const extension = mime.getExtension(file.type);
@@ -69,22 +70,48 @@ export class ImageNewComponent {
 
   loadExternalImage() {
     if (this.image.externalUrl) {
+      this.image.source = ResourceSourceEnum.External;
       this.imageObjectUrl = this.image.externalUrl;
     }
   }
 
   addImage() {
     if (this.uploadedFile) {
-      this.imageService.addImage(this.image, this.imageObjectUrl);
+      this.toBase64(this.uploadedFile).then((base64Data) => {
+        this.imageService.addImage(this.image, base64Data as string);
+        this.afterAddImage();
+
+      }).catch((error) => {
+        console.error(error);
+        this.messageService.add({
+          summary: 'Failed to get data from image',
+          severity: 'danger'
+        });
+      });
     } else {
       this.imageService.addImage(this.image);
+      this.afterAddImage();
     }
+  }
 
+  private afterAddImage() {
     this.messageService.add({
       summary: `Added image ${this.image.displayName}`,
       severity: 'success'
     });
 
     this.router.navigate(['/configuration/resources']);
+
+  }
+
+
+  // from https://gist.github.com/marco-souza/552f94f87059fdeeef35e95d1680de84
+  private toBase64(file: File) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   }
 }

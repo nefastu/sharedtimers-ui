@@ -3,11 +3,23 @@
         <ng-template #title>
             Manage images
         </ng-template>
+        <p-confirmpopup />
+        <p-toast />
         <div class="flex flex-col gap-2 mt-2 mb-2">
             @for (image of imageService.getImages(); track image.id) {
-                <div class="flex flex-row gap-2">
+                <div class="flex flex-row gap-2 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-xl ">
+                    @if (imageExportMode) {
+                        <p-checkbox class="self-center" (change)="toggleImageExport($event, image.id)" [binary]="true" />
+                    }
                     <img role="presentation" height="75" width="75" [ngStyle]="{'image-rendering': image.renderingMode}" [src]="imageService.getImageObjectUrl(image.id)" />
-                    <span class="text-xl self-center">{{image.displayName}}</span>
+                    <div class="self-center flex flex-col grow">
+                        <span class="text-xl">{{image.displayName}}</span>
+                        <span class="text-sm italic">
+                            from {{image.source}}
+                        </span>
+                    </div>
+                    <p-button [link]="true" [routerLink]="['/configuration/resources/images/' + image.id]" severity="secondary" icon="pi pi-pencil" />
+                    <p-button text severity="danger" (click)="confirmDelete($event, image)" icon="pi pi-trash" />
 
                 </div>
             }
@@ -25,6 +37,11 @@
         <ng-template #footer>
             <p-button [link]="true" routerLink="images/new" label="Add new image" />
             <p-button [link]="true" routerLink="images/import" label="Import images" />
+            <p-button text (click)="imageExportMode = !imageExportMode" label="Toggle export mode" />
+            @if (imageExportMode) {
+                <p-button text (click)="exportSelectedImages()" [disabled]="imagesToExport.length === 0" label="Export selected image(s)" />
+            }
+
         </ng-template>
     </p-card>
     <p-card>

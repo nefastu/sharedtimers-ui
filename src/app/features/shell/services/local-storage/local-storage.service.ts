@@ -69,6 +69,18 @@ export class LocalStorageService {
     return this.getLocalStorageEntry<IImage>(this.PREFIX_IMAGE + imageId);
   }
 
+  public deleteImage(imageId: string): void {
+    localStorage.removeItem(this.PREFIX_IMAGE + imageId);
+    localStorage.removeItem(this.PREFIX_IMAGEDATA + imageId);
+
+    const updatedImagesList = this.images;
+    const index = updatedImagesList.indexOf(imageId);
+    if (index !== -1) {
+      updatedImagesList.splice(index, 1);
+    }
+    localStorage.setItem(this.KEY_IMAGES, JSON.stringify(updatedImagesList));
+  }
+
   public getImageData(imageId: string): string | null {
     return this.getLocalStorageEntry<string>(this.PREFIX_IMAGEDATA + imageId);
   }
