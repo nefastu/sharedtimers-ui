@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IGlobalSettings } from '../../models/GlobalSettings';
+import { IGlobalSettings } from '../../models/settings/GlobalSettings';
 import { ITimerSet } from '../../models/TimerSet';
 import { ITimerSelectionEntry } from '../../models/TimerSelectionEntry';
+import { IImage } from '../../models/resources/Image';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,11 @@ import { ITimerSelectionEntry } from '../../models/TimerSelectionEntry';
 export class LocalStorageService {
   private KEY_GLOBALSETTINGS = 'sharedtimers_globalsettings';
   private KEY_TIMERSELECTION = 'sharedtimers_timerselection';
+  private KEY_IMAGES = 'sharedtimers_images';
+
   private PREFIX_TIMERSET = 'sharedtimers_timerset_';
+  private PREFIX_IMAGE = 'sharedtimers_image_';
+  private PREFIX_IMAGEDATA = 'sharedtimers_imagedata_';
 
 
   get globalSettings(): IGlobalSettings | null {
@@ -40,6 +45,32 @@ export class LocalStorageService {
 
   public getTimerSet(timerSetId: string): ITimerSet | null {
     return this.getLocalStorageEntry<ITimerSet>(this.PREFIX_TIMERSET + timerSetId);
+  }
+
+  get images(): string[] {
+    const valueFromLocalStorage = this.getLocalStorageEntry<string[]>(this.KEY_IMAGES);
+    if (valueFromLocalStorage === null) {
+      return [];
+    }
+    return valueFromLocalStorage;
+  }
+
+  public setImage(image: IImage, base64Data: string | undefined = undefined) {
+    localStorage.setItem(this.PREFIX_IMAGE + image.id, JSON.stringify(image));
+    if (base64Data !== undefined) {
+      localStorage.setItem(this.PREFIX_IMAGEDATA + image.id, JSON.stringify(base64Data));
+    }
+    const updatedImagesList = this.images;
+    updatedImagesList.push(image.id);
+    localStorage.setItem(this.KEY_IMAGES, JSON.stringify(updatedImagesList));
+  }
+
+  public getImage(imageId: string): IImage | null {
+    return this.getLocalStorageEntry<IImage>(this.PREFIX_IMAGE + imageId);
+  }
+
+  public getImageData(imageId: string): string | null {
+    return this.getLocalStorageEntry<string>(this.PREFIX_IMAGEDATA + imageId);
   }
 
   private getLocalStorageEntry<T>(key: string): T | null {

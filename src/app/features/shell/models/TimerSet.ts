@@ -1,7 +1,6 @@
+import { ITimerDisplayGroup } from "./display/TimerDisplayGroup";
 import { IPhase } from "./Phase";
-import { ITimerSound } from './TimerSound';
 import { ITimerEvent } from './TimerEvent';
-import { ITimerImage } from './TimerImage';
 
 export interface ITimerSet {
     // randomly generated guid
@@ -10,6 +9,8 @@ export interface ITimerSet {
     displayName: string;
     // for timer selection
     group: string;
+    // for timer selection
+    subgroup: string | undefined;
     created: Date;
     updated: Date;
     
@@ -22,6 +23,7 @@ export interface ITimerSet {
     events: ITimerEvent[];
     
     // sound library for timer set
-    sounds: ITimerSound[];
-    images: ITimerImage[];
+    soundIds: string[];
+    imageIds: string[];
+    displayGroups: ITimerDisplayGroup[];
 }

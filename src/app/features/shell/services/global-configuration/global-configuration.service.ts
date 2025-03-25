@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, inject, signal } from '@angular/core';
-import { IGlobalSettings } from '../../models/GlobalSettings';
+import { IGlobalSettings } from '../../models/settings/GlobalSettings';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Injectable({

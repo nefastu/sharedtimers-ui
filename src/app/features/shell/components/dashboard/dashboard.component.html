@@ -18,7 +18,19 @@
             A total of <!--{{timerEditorService.timerSelection().length}}--> timer sets are registered
         </p>
         <ng-template #footer>
-            <p-button routerLink="/edit" [link]="true" label="Edit timers" />
+            <p-button routerLink="/configuration/timers" [link]="true" label="Configure timers" />
+        </ng-template>
+    </p-card>
+    <p-card>
+        <ng-template #title>
+            Edit resources
+        </ng-template>
+        <div>
+            #number images are available.<br/>
+            #number sounds are available.
+        </div>
+        <ng-template #footer>
+            <p-button [link]="true" routerLink="/configuration/resources" label="Configure resources" />
         </ng-template>
     </p-card>
 </div>

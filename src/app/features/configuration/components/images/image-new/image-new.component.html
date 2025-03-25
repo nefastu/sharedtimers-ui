@@ -1,0 +1,62 @@
+<div class="edit-container">
+    <p-card>
+        <ng-template #title>
+            Add new image
+        </ng-template>
+
+
+        <div class="timers-list">
+
+            @if (imageObjectUrl === undefined) {
+                <p-selectbutton class="mt-2 mb-2"
+                [options]="importOptions" [(ngModel)]="importMode" optionLabel="label" optionValue="value" />
+                @if (importMode === 'file') {
+                    <app-file-import (uploadedFile)="onFileUpload($event)" />
+    
+                }
+        
+                @if (importMode === 'external') {
+                    <!-- https://i.imgur.com/YyVJSrN.png -->
+                    <div class="input-field">
+                        <label for="externalurl">External image Url</label>
+                        <input pInputText autocomplete="off" id="externalurl" [(ngModel)]="image.externalUrl" />
+                    </div>
+                    <p-button class="mt-2" label="Load iamge" (click)="loadExternalImage()" />
+                }
+            }
+
+            @if (imageObjectUrl !== undefined) {
+                <div class="image-container">
+                    <p-button class="self-end" text icon="pi pi-times" severity="danger" (click)="removeUploadedFile()" pTooltip="Remove image" />
+                    <img class="self-center" [ngStyle]="{'image-rendering': image.renderingMode}" role="presentation" [src]="imageObjectUrl" width="150" height="150" />
+                    @if (uploadedFile !== undefined) {
+                        <span class="self-center">{{uploadedFile.name}}</span>
+                    }
+                    @if (image.externalUrl !== undefined) {
+                        <span class="self-center">{{image.externalUrl}}</span>
+                    }
+                </div>
+                <label for="rendermode">Rendering mode</label>
+                <p-selectbutton id="rendermode" [options]="renderingModeOptions" [(ngModel)]="image.renderingMode" />
+
+                <div class="image-input-list">
+                    <div class="input-field">
+                        <label for="id">Id</label>
+                        <input pInputText id="id" disabled [ngModel]="image.id" />
+                    </div>
+
+                    <div class="input-field">
+                        <label for="friendlyname">Display name</label>
+                        <input pInputText id="friendlyname" autocomplete="off" [(ngModel)]="image.displayName" required />
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <ng-template #footer>
+            <p-button [link]="true" routerLink="../../" severity="secondary" label="Cancel" />
+            <p-button text [disabled]="!imageObjectUrl || !image.displayName" label="Add image" (click)="addImage()" />
+        </ng-template>
+    </p-card>
+</div>

@@ -1,0 +1,35 @@
+.edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.timers-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-input-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-style: dashed;
+    border-color: #979797;
+    border-width: 1px;
+}

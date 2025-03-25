@@ -1,18 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITimerSet } from '../../../../models/TimerSet';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { FileImportComponent } from '../../../file-import/file-import.component';
-import { ITimerImage } from '../../../../models/TimerImage';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { TooltipModule } from 'primeng/tooltip';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FileImportComponent } from '../file-import/file-import.component';
+import { ITimerSet } from '../../../shell/models/TimerSet';
+import { ITimerImage } from '../../../shell/models/TimerImage';
 
 @Component({
     selector: 'app-edit-timer-images',
-    imports: [MatFormFieldModule, FormsModule, MatTooltipModule, FileImportComponent, MatCardModule, MatIconModule, MatButtonModule, MatInputModule],
+    imports: [FormsModule, TooltipModule, FileImportComponent, CardModule, ButtonModule, InputTextModule],
     templateUrl: './edit-timer-images.component.html',
     styleUrl: './edit-timer-images.component.scss'
 })

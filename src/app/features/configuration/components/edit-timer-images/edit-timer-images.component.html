@@ -1,18 +1,19 @@
 
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            Images
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="flex-column-container">
-        @if (!timerData.images || timerData.images.length === 0) {
+<p-card>
+    <ng-template #title>
+        Images
+    </ng-template>
+    <div class="flex-column-container">
+         <!--@if (!timerData.images || timerData.images.length === 0) {
             No images uploaded
         } @else {
             @for (image of timerData.images; track image) {
-                <div class="image-display flex-row-container">
+               <div class="image-display flex-row-container">
                     <img [src]="image.base64Data" />
                     <div>
+                        <div class="field">
+                            <label for="imagename" >Name</label>
+                        </div>
                         <mat-form-field>
                             <label>Name</label>
                             <input matInput [(ngModel)]="image.name">
@@ -21,18 +22,14 @@
                     </div>
                 </div>
             }
-        }
+        }-->
         @if (showImageUpload) {
             <app-file-import (uploadedFile)="addImageToTimerSet($event)"></app-file-import>
         }
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button (click)="backToOverview.emit(true)">
-            <mat-icon>arrow_back</mat-icon>
-            Back to overview
-        </button>
-        <button mat-button color="primary" (click)="showImageUpload = !showImageUpload">
-            Upload image
-        </button>
-    </mat-card-actions>
-</mat-card>
+    </div>
+
+    <ng-template #footer>
+        <p-button (click)="backToOverview.emit(true)" label="Back to overview" icon="pi pi-arrow-left" />
+        <p-button (click)="showImageUpload = !showImageUpload" label="Upload image" />
+    </ng-template>
+</p-card>
