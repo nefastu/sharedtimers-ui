@@ -11,11 +11,13 @@ The following milestones should be used to track progress.
 - [x] basic routing for timer selection, timer view, admin overview, timer config overview
 
 ### Milestone 2: working timer configuration
+- [x] save images to localStorage
+- [ ] import/export of images
+- [ ] save sounds to localStorage
+- [ ] import/export of sounds
 - [ ] save timers to localStorage
 - [ ] import/export of timers
 - [ ] create/update/delete timers
-- [ ] import sounds to timers
-- [ ] import images to timers
 
 ### Milestone 3: local timer playback
 - [ ] active timer view
